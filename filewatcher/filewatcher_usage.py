@@ -21,7 +21,7 @@ for k,v in files_info_dict.items():
 	print('size: '+ v.size)
 	# time attribute consists of file modified time in datetime
 	print('time: '+ v.time.strftime('%d%m%Y%H%M%S'))
-	# text attribute consists of retrival status
+	# text attribute consists of retrival data type deatails in str
 	print('text: '+ v.text)
 
 '''
