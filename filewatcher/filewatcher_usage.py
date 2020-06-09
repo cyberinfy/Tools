@@ -13,13 +13,13 @@ sortbytime  - Sorts the file_info_dict based on last modified time
 showprint   - Prints a file_info object in console after each retrival if value is True
 
 __________________________________________________
-|getinfo - Returns a dict object for each file:    |
+|getinfo - Returns a dict object for each file:   |
 |_________________________________________________|
 key	 - filepath+lastmodifiedtime.strftime(%d%m%Y%H%M%S)
 value	 - a FileInfo object
 
 __________________________________________________
-|FileInfo object - Attributes  |
+|FileInfo object - Attributes                     |
 |_________________________________________________|
 
 path		 - file full path as a string
