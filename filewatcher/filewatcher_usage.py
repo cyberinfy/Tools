@@ -12,7 +12,7 @@ sortbytime  - Sorts the file_info_dict based on last modified time
 showprint   - Prints a file_info object in console after each retrival if value is True
 
 getinfo - Returns a dict object for each file:
-key		- filepath+lastmodifiedtime.strftime(%d%m%Y%H%M%S)
+key	- filepath+lastmodifiedtime.strftime(%d%m%Y%H%M%S)
 value	- a FileInfo object
 
 FileInfo object - Attributes
