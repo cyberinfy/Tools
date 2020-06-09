@@ -14,13 +14,13 @@ showprint   - Prints a file_info object in console after each retrival if value 
 
 
 getinfo  - Returns a dict object for each file:   
-______________________________________________
+_______________________________________________
 key	 - filepath+lastmodifiedtime.strftime(%d%m%Y%H%M%S)
 value	 - a FileInfo object
 
 
 FileInfo object - Attributes                     
-____________________________
+_____________________________
 path		- file full path as a string
 name		- file name as a string
 size		- file size in maximum possible unit like MB, GB etc as a string
