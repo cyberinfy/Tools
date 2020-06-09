@@ -1,16 +1,34 @@
 # pip install filewatcher
 
 
-import filewatcher
+from filewatcher import getinfo
+
+'''
+getinfo     - Keyword Arguments:
+directory   - The location you want to capture files from
+filemask    - To specify file type, Use '*' to retrive info of all files
+recursively - Get files information from sub-directories too if value is True 
+sortbytime  - Sorts the file_info_dict based on last modified time
+showprint   - Prints a file_info object in console after each retrival if value is True
+
+getinfo - Returns a dict object for each file:
+key		- filepath+lastmodifiedtime.strftime(%d%m%Y%H%M%S)
+value	- a FileInfo object
+
+FileInfo object - Attributes
+path			- file full path as a string
+name			- file name as a string
+size			- file size in maximum possible unit like MB, GB etc as a string
+time			- file modified time as a datetime object
+'''
 
 
-# Retrieves files information from sub-directories too if recuresively=True
-files_info_dict = filewatcher.get_files_info(directory='/home/krishna/mygit-repos/',recursively=True,sortbytime=False)
+files_info_dict = getinfo(directory='/home/krishna/mygit-repos/',filemask='*.png',recursively=True,sortbytime=True,showprint=True)
 
-# Doesn't retrieve files information from sub-directories if recursively=False
-files_info_dict = filewatcher.get_files_info(directory='/home/krishna/mygit-repos/',recursively=False,sortbytime=True)
+files_info_dict = getinfo(directory='/home/krishna/mygit-repos/',filemask='*',recursively=False,sortbytime=False,showprint=False)
 
 for k,v in files_info_dict.items():
+	
 	print('key:', k)
 	print('value:')
 	# path attribute consists of file path in str
@@ -24,8 +42,14 @@ for k,v in files_info_dict.items():
 	# text attribute consists of retrival data type deatails in str
 	print('text: '+ v.text)
 
+
 '''
-output:
+Execution:
+> python filewatcher_usage.py 
+ path: /home/krishna/mygit-repos/Arch-Linux/Window-Managers/DWM/Wallpapers/Spider Verse.png
+ name: Spider Verse.png
+ size: 81.35 KB
+ time:2020-06-05 08:36:42.560497
 key: /home/krishna/mygit-repos/New Empty File_08062020010939
 value:
 path: /home/krishna/mygit-repos/New Empty File
