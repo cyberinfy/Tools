@@ -5,7 +5,7 @@ from filewatcher import getinfo
 
 '''
 getinfo     - Keyword Arguments:                  
-________________________________________________|
+________________________________
 directory   - The location you want to capture files from
 filemask    - To specify file type, Use '*' to retrive info of all files
 recursively - Get files information from sub-directories too if value is True 
@@ -14,13 +14,13 @@ showprint   - Prints a file_info object in console after each retrival if value 
 
 
 getinfo  - Returns a dict object for each file:   
-_________________________________________________
+______________________________________________
 key	 - filepath+lastmodifiedtime.strftime(%d%m%Y%H%M%S)
 value	 - a FileInfo object
 
 
 FileInfo object - Attributes                     
-_________________________________________________
+____________________________
 path		- file full path as a string
 name		- file name as a string
 size		- file size in maximum possible unit like MB, GB etc as a string
