@@ -21,7 +21,6 @@ value	 - a FileInfo object
 __________________________________________________
 |FileInfo object - Attributes                     |
 |_________________________________________________|
-
 path		 - file full path as a string
 name		 - file name as a string
 size		 - file size in maximum possible unit like MB, GB etc as a string
