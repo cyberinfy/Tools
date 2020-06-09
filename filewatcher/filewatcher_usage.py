@@ -3,23 +3,29 @@
 
 from filewatcher import getinfo
 
-'''
-getinfo     - Keyword Arguments:
+'''_______________________________________________
+|getinfo    - Keyword Arguments:                  |
+|_________________________________________________|
 directory   - The location you want to capture files from
 filemask    - To specify file type, Use '*' to retrive info of all files
 recursively - Get files information from sub-directories too if value is True 
 sortbytime  - Sorts the file_info_dict based on last modified time
 showprint   - Prints a file_info object in console after each retrival if value is True
 
-getinfo - Returns a dict object for each file:
-key	- filepath+lastmodifiedtime.strftime(%d%m%Y%H%M%S)
-value	- a FileInfo object
+__________________________________________________
+|getinfo - Returns a dict object for each file:    |
+|_________________________________________________|
+key	 - filepath+lastmodifiedtime.strftime(%d%m%Y%H%M%S)
+value	 - a FileInfo object
 
-FileInfo object - Attributes
-path		- file full path as a string
-name		- file name as a string
-size		- file size in maximum possible unit like MB, GB etc as a string
-time		- file modified time as a datetime object
+__________________________________________________
+|FileInfo object - Attributes  |
+|_________________________________________________|
+
+path		 - file full path as a string
+name		 - file name as a string
+size		 - file size in maximum possible unit like MB, GB etc as a string
+time		 - file modified time as a datetime object
 '''
 
 
