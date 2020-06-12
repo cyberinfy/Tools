@@ -1,60 +1,38 @@
-# pip install filewatcher
+from filewatcher import glob, sortfilesby, getdict
 
-
-from filewatcher import getinfo
-
-'''
-getinfo     - Keyword Arguments:
-directory   - The location you want to capture files from
-filemask    - To specify file type, Use '*' to retrive info of all files
-recursively - Get files information from sub-directories too if value is True 
-sortbytime  - Sorts the file_info_dict based on last modified time
-showprint   - Prints a file_info object in console after each retrival if value is True
-
-getinfo - Returns a dict object for each file:
-key		- filepath+lastmodifiedtime.strftime(%d%m%Y%H%M%S)
-value	- a FileInfo object
-
-FileInfo object - Attributes
-path			- file full path as a string
-name			- file name as a string
-size			- file size in maximum possible unit like MB, GB etc as a string
-time			- file modified time as a datetime object
-'''
-
-
-files_info_dict = getinfo(directory='/home/krishna/mygit-repos/',filemask='*.png',recursively=True,sortbytime=True,showprint=True)
-
-files_info_dict = getinfo(directory='/home/krishna/mygit-repos/',filemask='*',recursively=False,sortbytime=False,showprint=False)
-
-for k,v in files_info_dict.items():
+if __name__=='__main__':
 	
-	print('key:', k)
-	print('value:')
-	# path attribute consists of file path in str
-	print('path: '+ v.path)
-	# name attribute consists of file name in str
-	print('name: '+ v.name)
-	# size attribute consists of file size in str
-	print('size: '+ v.size)
-	# time attribute consists of file modified time in datetime
-	print('time: '+ v.time.strftime('%d%m%Y%H%M%S'))
-	# text attribute consists of retrival data type deatails in str
-	print('text: '+ v.text)
-
-
-'''
-Execution:
-> python filewatcher_usage.py 
- path: /home/krishna/mygit-repos/Arch-Linux/Window-Managers/DWM/Wallpapers/Spider Verse.png
- name: Spider Verse.png
- size: 81.35 KB
- time:2020-06-05 08:36:42.560497
-key: /home/krishna/mygit-repos/New Empty File_08062020010939
-value:
-path: /home/krishna/mygit-repos/New Empty File
-name: New Empty File
-size: 8 B
-time: 08062020010939
-text: Information
-'''
+	# location from where the files information is required
+	directory = '/run/media/krishna/Trans Silv/'
+	
+	# prefered file type to capture like('*'-> for all files, '*.ext' for a particular extension, etc.)
+	filemask = '*'
+	
+	# give true to monitor files from sub directories too else give False
+	recursive = True
+	
+	# give true to see each captured file's info during execution in console 
+	watch = True
+	
+	'''
+		pass the above created variables to glob to generate required files info.
+		A file's information is genrated as a dict object with the following keys:
+			1) name: contains file name as str
+			2) path: contains file path as str
+			3) time: contains file's last modified time as datetime
+			4) size: contains file size as str in maximum possible unit like( KB, MB, GB, etc.)
+			5) stat: contains file info extraction status as str like('Extraction successful' or 'Extraction failed due to ...')
+	 '''
+	files_info_gen = glob(directory, filemask, recursive, watch)
+	
+	# to convert files_info_gen to list
+	files_info_list = list(files_info_gen)
+	
+	# to sort files_info based on a key like('name','path','time','size') and an order like('asc','desc')
+	sortfilesby(files_info_list, 'time', 'asc')
+	
+	'''
+		to create a dictionary with items of files_info_list,
+		where each item will become a value with key as filename+lastmodifiedtime.strftime('%d%m%Y%H%M%S')
+	'''
+	files_info_dict = getdict(files_info_list)
